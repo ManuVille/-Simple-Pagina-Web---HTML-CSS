@@ -1,0 +1,265 @@
+:root{/*Define paleta de colores*/
+  --blanco: #ffffff;
+  --oscuro: #212121;
+  --primario: #ffc107;
+  --secundario: #0097a7;
+  --gris: #757575; 
+  --grisClaro: #cdd4dc;
+}
+
+/* Globales **/
+html{
+    font-size: 62.5%; /*Codigo para un mejor control de diseño y de adapte de muchas formas*/
+    box-sizing: border-box; /*ajusta el elemento a sus pixeles originales, esta linea viene con la de abajo*/
+    scroll-snap-type: y mandatory; /*scroll de arriba hacia abajo*/
+}
+
+/*scroll snap*/
+.servicio,
+.navegacion-principal,
+.formulario {
+    scroll-snap-align: center; /*centra el scroll a este punto en especifico*/
+    scroll-snap-stop: always; /*forza el scrool a detenerse aqui*/
+}
+
+*, *:before, *:after {/*con esta*/
+    box-sizing: inherit;
+ }
+
+body{
+    font-size: 16px /* y este*/;
+    font-family: 'Krub', sans-serif;
+    margin: auto;
+    background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100%); /*degradado de color -> (de abajo hacia arriba, color de abajo - espacio de pantalla, color de arriba)*/
+}
+
+.contenedor {/*centra el contenido*/
+    max-width: 120rem;/*no genera un scroll horizontal inecesario*/
+    margin: 0 auto;/*tiene 4 valores top, right, bootom, left*/
+ }
+ .boton{
+     background-color: var(--secundario);
+     color: var(--blanco);
+     padding: 1rem 3rem; /*contorno del boton*/
+     margin-top: 1rem;/*separacion del boton o texto*/
+     font-size: 2rem;
+     text-decoration: none;/*quitamos el subrayado*/
+     text-transform: uppercase;/*texto en mayuscula*/
+     font-weight: bold; /*texto en negrita*/
+     border-radius: .5rem;/*borde del boton*/
+     width: 90%; /*crece el ancho del boton*/
+     text-align: center;
+     border: none;
+ }
+ @media (min-width: 768px) {
+     .boton{
+         width: auto;
+     }
+ }
+
+.boton:hover { /*cuando se aplica estilo a un boton de formulario pierde la manita al pulsar*/
+    cursor: pointer; /*agrega las manos a los botones*/
+}
+
+ .sombra{ /*Efecto de sombra en documento principal, link: https://www.cssmatic.com/box-shadow*/
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.48);
+    -moz-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.48);
+    box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.48);
+    background-color: var(--blanco);
+    padding: 2rem; /*separar parrafos entre si*/
+    border-radius: 1rem;/*esquina redonda*/
+}
+/* Tipografia **/
+h1{
+    font-size: 3.8rem; /*mejor que px ya que toma como referencia el tamaño del documento*/
+}
+h2{
+    font-size: 2.8rem; /*mejor que px ya que toma como referencia el tamaño del documento*/
+}
+h3{
+    font-size: 1.8rem; /*mejor que px ya que toma como referencia el tamaño del documento*/
+}
+h1,h2,h3{
+    text-align: center;
+}
+.titulo span{ 
+    font-size: 2rem;
+}
+.flex{
+    display: flex;
+}
+.alinear-derecha {
+    justify-content: flex-end;
+}
+.w-sm-100 {
+    width: 100%; /*tamaño del boton*/
+}
+@media (min-width: 768px) { /*boton formulario*/
+    .w-sm-100 {
+        width: 30%;
+        
+    }
+    .flex{
+        padding-top: 3rem; /*acomoda el boton de formulario*/
+    }
+}
+
+.nav-bg {
+    background-color: var(--secundario);
+}
+.navegacion-principal { 
+    display: flex;/*distribuye enlaces en horizontal*/
+    flex-direction: column;
+}
+@media (min-width: 768px) {
+    .navegacion-principal{
+        flex-direction: row;
+        justify-content: space-between;/*distribuye contenido en esquinas con mismo ancho lateral horizontal*/
+    }
+}
+.navegacion-principal a {
+    display: block;
+    text-align: center;/*alinea enlaces al centro cuand se reduce ventana*/
+    color: var(--blanco);
+    text-decoration: none; /*elimina el subrayado del enlace*/
+    font-size: 2 rem;/*tamaño de texto*/
+    font-weight: 700;
+    padding: 1rem; /*1 1 1 1 ajustar el hover*/
+}
+.navegacion-principal a:hover {/*Cuando se coloca el cursor sobre los enlaces*/
+    background-color: var(--primario);
+    color: var(--oscuro);
+}
+
+.hero{
+    background-image: url(../img/hero.jpg);
+    background-repeat: no-repeat;/*no se repite la imagen*/
+    background-size: cover; /*se usa toda la imagen*/
+    height: 480px;
+    position: relative;
+    margin-bottom: 2rem;/*separar la imagen del texto de abajo*/
+}
+
+.contenido-hero{ /*tono trasparente a imagen*/
+    position: absolute;
+    background-color: rgba(0, 0 , 0, .7 );/*anterior*/
+    width: 100%;
+    height: 100%;
+
+    /*Codigo que alinea cualquier parte al centro*/
+   /**/ display: flex; /*todo contenido lo pone de derecha a izquierda - alinea horizontalmente*/
+   /**/ flex-direction:column; /*alinea los elementos abajo de otro*/
+   /**/ align-items: center;/*Centra los elementos en medio de la pantalla */
+   /**/ justify-content: center;/*termina de centrar horizontal y verticalmente*/
+   /*----------------------------------------------*/
+}
+
+.contenido-hero h2,/*selecciono a ambos*/
+.contenido-hero p {
+   color:  var(--blanco);
+}
+.ubicacion{
+    display: flex;
+    align-items: flex-end;/*alinea verticalmente el texto*/
+}
+
+
+
+/*servicios*/
+@media (min-width: 768px) { /*se acomoda el grid de forma vertical*/
+    .servicios{
+        display: grid; /*grid hace que el contenido se acomode dentro de un area definida*/
+        grid-template-columns: repeat(3, 1fr); /*fr significa "fraccion", cada uno tomara una fraccion de todo, osea 1/3 y se repetira 3 veces*/
+        column-gap: 1rem; /*separa las columnas entre si*/
+    }
+}
+
+.servicio{/*mueve las figuras en el padre*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.servicio h3{
+    color: var(--secundario);/*color de los subtitulos de las figuras*/
+    font-weight: normal;
+}
+.servicio p{
+    line-height: 2; /*espacio entre palabras*/
+}
+.servicio .iconos{ /*fondos de circulo amarillo*/
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%; /*hacemos un circulo al cuadrado*/
+    display: flex;/*alinear iconos dentro del circulo*/
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/**contacto**/
+.formulario{
+    background-color: var(--gris);
+    width: min(60rem, 100%); /*utiliza el valor mas pequeño y hace mas pequeño el borde sin mediaquery*/
+    margin: 0 auto; /*ajusta el contenido en el centro, y solo se usa esta intruccion cuando no esta en un flex y es un formulario*/
+    padding: 2rem;
+    border-radius: 1rem;/*esquinas redondeadas*/
+
+}
+
+
+.formulario fieldset{
+    border: none;/*quitamos el contorno del formulario*/
+}
+
+.formulario legend{ /*contenido del formulario*/
+    text-align: center; /*alineamos al centro*/
+    font-size: 1.8rem;/*mas grande el texto*/
+    text-transform: uppercase;/*sean mayusculas*/
+    font-weight: 700;/*para que esten en negritas*/
+    margin-bottom: 2rem;/*se separe el texto del input*/
+    color: var(--primario);
+}
+
+
+@media (min-width: 768px) {/*ajusta el diseño del formularioo*/
+    .contenedor-campos {
+        display: grid;
+        grid-template-columns: 50% 50%;/*divide el contenido del formulario en dos columnas*/
+        grid-template-rows: auto auto 20rem;
+        column-gap: 1rem;/*separacion de columnas*/
+    }
+
+    .campo:nth-child(3),
+    .campo:nth-child(4){/*si hay otros selectores con el mismo nomnre "campo" tu le pasas el numero para referirte a uno de ellos, en este caso correo*/
+        grid-column: 1 / 3; /*aqui estamos extendiendo el espacio que tiene un bloque sobre otro que viene enumerado, se verifica en el navegador de firefox developer*/
+
+    }
+}
+.campo {
+    margin-bottom: 1rem;
+
+} 
+
+.campo label {
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block; /*se organiza como lista*/
+}
+
+.campo textarea {
+    height: 20rem;
+
+}
+
+.input-text {
+    width: 100%;/*ocupe todo el espacio*/
+    border: none;
+    padding: .5rem;/*mas grande los inputs*/
+    border-radius: .5rem;
+}
+
+/**footer*/
+.footer{
+    text-align: center;
+}
